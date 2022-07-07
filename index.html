@@ -18,7 +18,7 @@
         return computerMove[random];
     }
 
-    //Simulates a round between the player and the computer
+    //A round between the player and the computer
     function playRound(playerSelection, computerSelection){
         let result;
         if (playerSelection === computerSelection){
@@ -34,11 +34,13 @@
         return result;
     }
 
+    // 5 Rounds Game
     function game(){
         let playerScore=0;
         let computerScore=0;
         let result;
         for (let i = 0; i < 5 ; i++) {
+            playerSelection=playerPlay();
             computerSelection=computerPlay();
             playRound(playerSelection,computerSelection);
             result =  playRound(playerSelection,computerSelection);
@@ -55,7 +57,17 @@
     } else {console.log(`${score} It\'s a TIE!`)}
     }
 
-const playerSelection = "rock";
+    //Player's choice
+    function playerPlay (){
+        const input = prompt("Rock, Paper or Scissors?");
+        let result = input.toLowerCase();
+        while (result != 'rock' && result != 'paper' && result != 'scissors'){
+            let newResult = prompt("Invalid input! Write: Rock, Paper or Scissors?");
+            result = newResult.toLowerCase();
+        }
+        return result;
+    }
+//const playerSelection = "rock";
 
 game();
 
