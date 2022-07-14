@@ -104,7 +104,7 @@
         let playerMove = button.id;
         let value = playerMove.toLowerCase();
         currentResult = playRound(value,computerPlay());
-        content.textContent = currentResult;
+        content.textContent = `Round ${round}: ${currentResult}`;
         currentScore(currentResult);
         currentPlayerScore.textContent = `Player: ${playerScore}`;
         currentComputerScore.textContent = `Computer: ${computerScore}`;
