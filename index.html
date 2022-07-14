@@ -7,10 +7,10 @@
     <title>Document</title>
 </head>
 <body>
-    <div>
-        <button id = 'btnRock'>ROCK</button>
-        <button id = 'btnPaper'>PAPER</button>
-        <button id = 'btnScissors'>SCISSORS</button>
+    <div class="container">
+        <button id = 'Rock'>ROCK</button>
+        <button id = 'Paper'>PAPER</button>
+        <button id = 'Scissors'>SCISSORS</button>
     </div>
 </body>
 <script>
@@ -75,23 +75,19 @@
     }*/
 
     //Event Listeners
-    
-    //ROCK
-    const btnRock = document.querySelector("#btnRock");
-    btnRock.addEventListener('click', () => {
-        console.log(playRound('rock',computerPlay()));
-    });
 
-     //PAPER
-     const btnPaper = document.querySelector("#btnPaper");
-    btnPaper.addEventListener('click', () => {
-        console.log(playRound('paper',computerPlay()));
-    });
-
-    //SCISSORS
-    const btnScissors = document.querySelector("#btnScissors");
-    btnScissors.addEventListener('click', () => {
-        console.log(playRound('scissors',computerPlay()));
+    const container = document.querySelector('.container');
+    const buttons = document.querySelectorAll('button');
+    buttons.forEach((button) => {
+        button.addEventListener('click', () => {
+        
+        let playerMove = button.id;
+        let value = playerMove.toLowerCase();
+        const content = document.createElement('p');
+        content.classList.add('content');
+        content.textContent = playRound(value,computerPlay());
+        container.appendChild(content);
+        });
     });
 
 //game();
