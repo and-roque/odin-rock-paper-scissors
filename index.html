@@ -74,19 +74,20 @@
         return result;
     }*/
 
-    //Event Listeners
+ 
 
     const container = document.querySelector('.container');
     const buttons = document.querySelectorAll('button');
+    const content = document.createElement('p');
+    content.classList.add('content');
+    container.appendChild(content);
+
+    //Event Listeners
     buttons.forEach((button) => {
-        button.addEventListener('click', () => {
-        
+        button.addEventListener('click', () => {    
         let playerMove = button.id;
         let value = playerMove.toLowerCase();
-        const content = document.createElement('p');
-        content.classList.add('content');
         content.textContent = playRound(value,computerPlay());
-        container.appendChild(content);
         });
     });
 
