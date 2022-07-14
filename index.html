@@ -8,9 +8,9 @@
 </head>
 <body>
     <div>
-        <button>ROCK</button>
-        <button>PAPER</button>
-        <button>SCISSORS</button>
+        <button id = 'btnRock'>ROCK</button>
+        <button id = 'btnPaper'>PAPER</button>
+        <button id = 'btnScissors'>SCISSORS</button>
     </div>
 </body>
 <script>
@@ -27,7 +27,9 @@
         let result;
         if (playerSelection === computerSelection){
             result = 'That\'s a Tie! Great minds think alike! Are you an human?';
-        } else if ((playerSelection === 'rock' && computerSelection==='scissors')||(playerSelection === 'paper' && computerSelection==='rock')||(playerSelection === 'scissors' && computerSelection==='paper')){
+        } else if ((playerSelection === 'rock' && computerSelection==='scissors')
+        ||(playerSelection === 'paper' && computerSelection==='rock')
+        ||(playerSelection === 'scissors' && computerSelection==='paper')){
             result = "You Win! Good choice!";
         } else {
             if (playerSelection === 'rock') {
@@ -62,7 +64,7 @@
     }
 
     //Player's choice
-    function playerPlay (){
+    /*function playerPlay (){
         const input = prompt("Rock, Paper or Scissors?");
         let result = input.toLowerCase();
         while (result != 'rock' && result != 'paper' && result != 'scissors'){
@@ -70,10 +72,29 @@
             result = newResult.toLowerCase();
         }
         return result;
-    }
-//const playerSelection = "rock";
+    }*/
 
-game();
+    //Event Listeners
+    
+    //ROCK
+    const btnRock = document.querySelector("#btnRock");
+    btnRock.addEventListener('click', () => {
+        console.log(playRound('rock',computerPlay()));
+    });
+
+     //PAPER
+     const btnPaper = document.querySelector("#btnPaper");
+    btnPaper.addEventListener('click', () => {
+        console.log(playRound('paper',computerPlay()));
+    });
+
+    //SCISSORS
+    const btnScissors = document.querySelector("#btnScissors");
+    btnScissors.addEventListener('click', () => {
+        console.log(playRound('scissors',computerPlay()));
+    });
+
+//game();
 
 </script>
 </html>
