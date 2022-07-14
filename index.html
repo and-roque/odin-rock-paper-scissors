@@ -12,6 +12,7 @@
         <button id = 'Paper'>PAPER</button>
         <button id = 'Scissors'>SCISSORS</button>
     </div>
+    <div class="result"><p style="font-weight: bold;"">RESULT:</p></div>
 </body>
 <script>
 
@@ -41,9 +42,7 @@
     }
 
     // 5 Rounds Game
-    function game(){
-        let playerScore=0;
-        let computerScore=0;
+    function game(playerScore,computerScore){
         let result;
         //for (let i = 0; i < 5 ; i++) {
             playerSelection=playerPlay();
@@ -63,18 +62,6 @@
     } else {console.log(`${score} It\'s a TIE!`)}
     }
 
-    //Player's choice
-    /*function playerPlay (){
-        const input = prompt("Rock, Paper or Scissors?");
-        let result = input.toLowerCase();
-        while (result != 'rock' && result != 'paper' && result != 'scissors'){
-            let newResult = prompt("Invalid input! Write: Rock, Paper or Scissors?");
-            result = newResult.toLowerCase();
-        }
-        return result;
-    }*/
-
- 
 
     const container = document.querySelector('.container');
     const buttons = document.querySelectorAll('button');
@@ -82,12 +69,16 @@
     content.classList.add('content');
     container.appendChild(content);
 
+    const result = document.querySelector('.result');
+    let currentResult;
+
     //Event Listeners
     buttons.forEach((button) => {
         button.addEventListener('click', () => {    
         let playerMove = button.id;
         let value = playerMove.toLowerCase();
-        content.textContent = playRound(value,computerPlay());
+        currentResult = playRound(value,computerPlay());
+        content.textContent = currentResult;
         });
     });
 
