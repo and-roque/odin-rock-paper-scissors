@@ -12,7 +12,10 @@
         <button id = 'Paper'>PAPER</button>
         <button id = 'Scissors'>SCISSORS</button>
     </div>
-    <div class="result"><p style="font-weight: bold;"">RESULT:</p></div>
+    <div class="score">
+        <p style="font-weight: bold;"">SCORE:</p>  
+    </div>
+    <div class="finalResult"></div>
 </body>
 <script>
 
@@ -42,24 +45,28 @@
     }
 
     // 5 Rounds Game
-    function game(playerScore,computerScore){
-        let result;
-        //for (let i = 0; i < 5 ; i++) {
-            playerSelection=playerPlay();
-            computerSelection=computerPlay();
-            playRound(playerSelection,computerSelection);
-            result =  playRound(playerSelection,computerSelection);
+    function game(n){
+        if (n < 5) {
+            round++;
+        } else {
+            if (playerScore > computerScore) {
+            finalResult.textContent = 'You win this game!';
+            } else if (playerScore < computerScore) {
+            finalResult.textContent = 'You lost this game!';
+            } else {
+            finalResult.textContent ='It\'s a TIE!';
+            }
+            playerScore =0;
+            computerScore = 0;
+            round = 1;
+        }
+    }
+
+    function currentScore(result){
             if (result ==='You Win! Good choice!') {
-                playerScore++;
+                return playerScore++;
             } else if (result === 'That\'s a Tie! Great minds think alike! Are you an human?') {
-            } else {computerScore++;}
-            console.log(playerSelection + " vs " + computerSelection);
-            console.log(playRound(playerSelection,computerSelection));
-        //}
-        const score = `The final result is: ${playerScore} - ${computerScore} -`
-        if (playerScore > computerScore) {console.log(`${score} You win this game!`)
-    } else if (playerScore < computerScore) {console.log(`${score} You lost this game!`)
-    } else {console.log(`${score} It\'s a TIE!`)}
+            } else {return computerScore++;}
     }
 
 
@@ -69,8 +76,27 @@
     content.classList.add('content');
     container.appendChild(content);
 
+
+    //Divs for SCORE
+    const score = document.querySelector('.score');
+    const currentPlayerScore = document.createElement('p');
+    currentPlayerScore.classList.add('currentPlayerScore');
+    score.appendChild(currentPlayerScore);
+
+    const currentComputerScore = document.createElement('p');
+    currentComputerScore.classList.add('currentComputerScore');
+    score.appendChild(currentComputerScore);
+
+    const finalResult = document.createElement('p');
+    finalResult.classList.add('finalResult');
+    score.appendChild(finalResult);
+
+
     const result = document.querySelector('.result');
     let currentResult;
+    let playerScore = 0;
+    let computerScore = 0;
+    let round = 1;
 
     //Event Listeners
     buttons.forEach((button) => {
@@ -79,6 +105,10 @@
         let value = playerMove.toLowerCase();
         currentResult = playRound(value,computerPlay());
         content.textContent = currentResult;
+        currentScore(currentResult);
+        currentPlayerScore.textContent = `Player: ${playerScore}`;
+        currentComputerScore.textContent = `Computer: ${computerScore}`;
+        game(round);
         });
     });
 
