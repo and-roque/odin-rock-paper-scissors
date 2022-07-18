@@ -115,3 +115,11 @@ img {
     justify-content: space-between;
     margin: 30px;
 }
+
+.roundStatus {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: space-between;
+}
