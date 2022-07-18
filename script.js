@@ -1,4 +1,9 @@
-
+    //Rock Paper Scissors image link
+    const playerOptions = {
+        "rock": "img/hand-rock.png",
+        "paper": "img/hand-paper.png",
+        "scissors": "img/hand-scissors.png"
+    }
     //Randomly return 'Rock', 'Paper' or 'Scissors'
     function computerPlay(){
         let computerMove = ['rock', 'paper', 'scissors'];
@@ -55,24 +60,8 @@
     const content = document.createElement('p');
     content.classList.add('content');
     container.appendChild(content);
-
-
-    //Divs for SCORE
     const currentScore = document.querySelector('#currentScore');
-    /*const currentPlayerScore = document.createElement('p');
-    currentPlayerScore.classList.add('currentPlayerScore');
-    score.appendChild(currentPlayerScore);
-
-    const currentComputerScore = document.createElement('p');
-    currentComputerScore.classList.add('currentComputerScore');
-    score.appendChild(currentComputerScore);*/
-
-    const fResult = document.querySelector('.finalResult');
-    const finalResult = document.createElement('p');
-    finalResult.classList.add('finalResult');
-    fResult.appendChild(finalResult);
-
-
+    const finalResult = document.querySelector('.resultMessage');
     const result = document.querySelector('.result');
     let currentResult;
     let playerScore = 0;
@@ -85,7 +74,7 @@
         let playerMove = button.id;
         let value = playerMove.toLowerCase();
         currentResult = playRound(value,computerPlay());
-        content.textContent = `Round ${round}: ${currentResult}`;
+        //content.textContent = `Round ${round}: ${currentResult}`;
         setScore(currentResult);
         currentScore.textContent = `${playerScore} - ${computerScore}`;
         game(round);
@@ -93,4 +82,6 @@
         });
     });
 
-//game();
+    //Set Player Move
+    const playerMove = document.querySelector(".playerMove");
+    playerMove=
