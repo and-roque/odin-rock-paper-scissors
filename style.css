@@ -20,6 +20,7 @@ body {
 .header {
     display: flex;
     width: 700px;
+    height: 100px;
     justify-content: space-between;
     align-items: center;
     border: solid rgb(255, 255, 255) 2px;
@@ -35,13 +36,28 @@ body {
     display: flex;
     flex-direction: column;
     justify-items: space-between;
+    justify-content: center;
+    align-content: center;
     align-items: center;
     background-color: beige;
     border-radius: 10px;
-    padding: 5px;
     color: black;
-    padding: 4px 10px;
-    width: 70px;
+    width: 100px;
+    height: 75px;
+    padding: 11px;
+}
+
+#currentScore {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+#scoreDisp {
+    font-size: 24px;
+    font-weight: bold;
+    color: rgba(148,167,233,1);
+    margin-bottom: 10px;
+    padding: 5px;
 }
 
 .container {
@@ -64,22 +80,11 @@ img {
 
 .result {
     display: flex;
-    width: 750px;
+    width: 850px;
     justify-content: space-between;
     align-items: center;
     align-content: center;
     padding: 10px;
-}
-
-.currentResult {
-    width: 24px 300px;
-    justify-content: center;
-    text-align: center;
-    /*background-color: beige;*/
-    font-size: 24px;
-    font-weight: 500;
-    border-radius: 12px;
-    margin: 5px 24px ;
 }
 
 .player {
@@ -90,9 +95,10 @@ img {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    min-width: 200px;
 }
 
-#againBtn {
+button {
     background-color:rgb(238,174,202) ;
     color: beige;
     font-size: large;
@@ -100,6 +106,13 @@ img {
     border-color: rgba(148,167,233,1);
     margin: 24px 12px;
     padding: 12px 24px;
+    transition: all 0.1s;
+    cursor: pointer;
+}
+
+button:hover{
+    transform: translate3d(0px, -2px, 0px);
+    background-color: rgb(182, 73, 213);
 }
 
 .resultMessage {
@@ -112,14 +125,25 @@ img {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    
     margin: 30px;
 }
 
 .roundStatus {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    align-content: space-between;
+    justify-items: center;
+    font-size: 24px;
+    font-weight: 500;
+    margin: 50px 24px ;
+    flex: 1;
+}
+
+.roundNum {
+    margin-bottom: 50px;
+}
+
+.nextRound {
+    margin-top: 75px;
 }

@@ -56,10 +56,12 @@
 
 
     const container = document.querySelector('.container');
-    const buttons = document.querySelectorAll('.choice');
+    const options = document.querySelectorAll('.choice');
     const content = document.createElement('p');
     content.classList.add('content');
     container.appendChild(content);
+    const nextRound = document.querySelector('.nextRound');
+    const againBtn = document.querySelector('#againBtn');
     const currentScore = document.querySelector('#currentScore');
     const finalResult = document.querySelector('.resultMessage');
     const result = document.querySelector('.result');
@@ -72,22 +74,55 @@
     const computerChoice = document.querySelector('.computerMove');
 
 
+    //Set ON/OFF PROPERTIES 
+    const containerDisp = document.querySelector('.container');
+    const resultDisp = document.querySelector('.result');
+    resultDisp.style.display = "none";
+    const finalResultDisp = document.querySelector('.finalResult'); 
+    finalResultDisp.style.display = "none";
+    currentScore.textContent = `${playerScore} - ${computerScore}`;
+
     //Event Listeners
-    buttons.forEach((button) => {
+    options.forEach((button) => {
         button.addEventListener('click', () => {    
         let playerMove = button.id;
         let value = playerMove.toLowerCase();
         let cpValue = computerPlay();
         currentResult = playRound(value,cpValue);
         setScore(currentResult);
-        //content.textContent = `Round ${round}: ${currentResult}`;
+        document.querySelector('.roundNum').textContent = `Round ${round}`;
         document.querySelector('.currentResult').textContent = currentResult;
         currentScore.textContent = `${playerScore} - ${computerScore}`;
-        game(round);
-        console.log(round);
+        console.log(round); 
         playerChoice.src= playerOptions [value];
         computerChoice.src = playerOptions [cpValue];
+        containerDisp.style.display = "none";
+        resultDisp.style.display = "flex";
+        if (round===5){
+           finalResultDisp.style.display = 'flex';
+           nextRound.style.display = 'none';
+        } else {
+            nextRound.style.display = 'flex';
+            finalResultDisp.style.display = "none";
+        }
+        game(round); 
         });
+
+    });
+
+    nextRound.addEventListener('click', () =>{
+        resultDisp.style.display = "none";
+        containerDisp.style.display = "flex";
+    });
+
+    againBtn.addEventListener('click', () =>{
+        round = 1;
+        playerScore = 0;
+        computerScore = 0;
+        currentScore.textContent = `${playerScore} - ${computerScore}`;
+        finalResultDisp.style.display = 'none';
+        resultDisp.style.display = "none";
+        containerDisp.style.display = "flex";
     });
 
     //Set Player Move
