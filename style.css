@@ -61,3 +61,57 @@ img {
 .container img:hover{
     transform: translate3d(0px, -8px, 0px);
 }
+
+.result {
+    display: flex;
+    width: 750px;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+    padding: 10px;
+}
+
+.currentResult {
+    width: 24px 300px;
+    justify-content: center;
+    text-align: center;
+    /*background-color: beige;*/
+    font-size: 24px;
+    font-weight: 500;
+    border-radius: 12px;
+    margin: 5px 24px ;
+}
+
+.player {
+    color: beige;
+    font-weight: bold;
+    font-size: xx-large; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#againBtn {
+    background-color:rgb(238,174,202) ;
+    color: beige;
+    font-size: large;
+    border-radius: 12px;
+    border-color: rgba(148,167,233,1);
+    margin: 24px 12px;
+    padding: 12px 24px;
+}
+
+.resultMessage {
+    font-size: xx-large;
+    font-style: italic;
+    color: beige;
+}
+
+.finalResult {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin: 30px;
+}

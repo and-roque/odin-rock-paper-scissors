@@ -68,20 +68,28 @@
     let computerScore = 0;
     let round = 1;
 
+    const playerChoice = document.querySelector('.playerMove');
+    const computerChoice = document.querySelector('.computerMove');
+
+
     //Event Listeners
     buttons.forEach((button) => {
         button.addEventListener('click', () => {    
         let playerMove = button.id;
         let value = playerMove.toLowerCase();
-        currentResult = playRound(value,computerPlay());
-        //content.textContent = `Round ${round}: ${currentResult}`;
+        let cpValue = computerPlay();
+        currentResult = playRound(value,cpValue);
         setScore(currentResult);
+        //content.textContent = `Round ${round}: ${currentResult}`;
+        document.querySelector('.currentResult').textContent = currentResult;
         currentScore.textContent = `${playerScore} - ${computerScore}`;
         game(round);
         console.log(round);
+        playerChoice.src= playerOptions [value];
+        computerChoice.src = playerOptions [cpValue];
         });
     });
 
     //Set Player Move
-    const playerMove = document.querySelector(".playerMove");
-    playerMove=
+    //const playerMove = document.querySelector(".playerMove");
+    
