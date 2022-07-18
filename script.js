@@ -42,7 +42,7 @@
         }
     }
 
-    function currentScore(result){
+    function setScore(result){
             if (result ==='You Win! Good choice!') {
                 return playerScore++;
             } else if (result === 'That\'s a Tie! Great minds think alike! Are you an human?') {
@@ -51,25 +51,26 @@
 
 
     const container = document.querySelector('.container');
-    const buttons = document.querySelectorAll('button');
+    const buttons = document.querySelectorAll('.choice');
     const content = document.createElement('p');
     content.classList.add('content');
     container.appendChild(content);
 
 
     //Divs for SCORE
-    const score = document.querySelector('.score');
-    const currentPlayerScore = document.createElement('p');
+    const currentScore = document.querySelector('#currentScore');
+    /*const currentPlayerScore = document.createElement('p');
     currentPlayerScore.classList.add('currentPlayerScore');
     score.appendChild(currentPlayerScore);
 
     const currentComputerScore = document.createElement('p');
     currentComputerScore.classList.add('currentComputerScore');
-    score.appendChild(currentComputerScore);
+    score.appendChild(currentComputerScore);*/
 
+    const fResult = document.querySelector('.finalResult');
     const finalResult = document.createElement('p');
     finalResult.classList.add('finalResult');
-    score.appendChild(finalResult);
+    fResult.appendChild(finalResult);
 
 
     const result = document.querySelector('.result');
@@ -85,10 +86,10 @@
         let value = playerMove.toLowerCase();
         currentResult = playRound(value,computerPlay());
         content.textContent = `Round ${round}: ${currentResult}`;
-        currentScore(currentResult);
-        currentPlayerScore.textContent = `Player: ${playerScore}`;
-        currentComputerScore.textContent = `Computer: ${computerScore}`;
+        setScore(currentResult);
+        currentScore.textContent = `${playerScore} - ${computerScore}`;
         game(round);
+        console.log(round);
         });
     });
 

@@ -4,23 +4,31 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Rock Paper Scissors</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="wrapper">
         <div class="header">
-
+            <h1>ROCK PAPER SCISSORS</h1>
+            <div class="score">
+                <p style="font-weight: bold;">SCORE</p>
+                <p id="currentScore"></p>  
+            </div>
         </div>
         <div class="container">
-            <button id = 'Rock'>ROCK</button>
-            <button id = 'Paper'>PAPER</button>
-            <button id = 'Scissors'>SCISSORS</button>
+            <img class="choice" id = 'Rock' src="img/hand-rock.png" alt="Rock">
+            <img class="choice" id = 'Paper' src="img/hand-paper.png" alt="Paper">
+            <img class="choice" id = 'Scissors' src="img/hand-scissors.png" alt="Scissors">
         </div>
-        <div class="score">
-            <p style="font-weight: bold;">SCORE:</p>  
+        <div class="result"></div>
+            <div class="playerMove"></div>
+            <div class="result"></div>
+            <div class="computerMove"></div>
+        
+        <div class="finalResult">
+            <button id="againBtn">Play Again</button>
         </div>
-        <div class="finalResult"></div>
     </div>
     
 </body>
